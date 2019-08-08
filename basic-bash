@@ -1,0 +1,28 @@
+# SHELL STUFF
+# ==========================================================
+
+export TERM="xterm-256color"
+
+
+
+
+
+# ALIASES & FUNCTIONS
+# ==========================================================
+
+alias cls='clear'
+alias kk='kubectl $@'
+
+# ls++
+function l () {
+    args=$@
+    echo "------ DIRECTORIES ---------------------------------------------------"
+    echo "$headers"
+    echo "$(ls -lah $args | grep '^d' | sort -f -k 9)"
+    echo
+    echo "--------- FILES ------------------------------------------------------"
+    echo "$headers"
+    filesList=$(ls -lah $args | grep -v '^d' | grep -v '^t' | sort -f -k 9)
+    echo "$filesList"
+    echo
+}
